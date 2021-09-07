@@ -7,4 +7,4 @@ RUN npm run build --prod
 
 # stage 2 - run app
 FROM nginx:alpine
-COPY --from=node /garden-journal-frontend/dist/garden-journal-frontend /usr/share/nginx/html
+COPY --from=node /garden-journal-frontend/dist/garden-journal /usr/share/nginx/html
