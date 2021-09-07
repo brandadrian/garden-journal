@@ -13,10 +13,12 @@ export class GardenJournalService {
   private readonly url: string = `${environment.backendUrl}/journal-items`;
   private mockData: Array<JournalItem> = journalItemsMock;
 
-  constructor() {   }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   public getJournalItems(): Observable<Array<JournalItem>> {
-    return of(this.mockData);
+    return this.http.get<Array<JournalItem>>(this.url);
   }
 
   public addJournalItem(journalItem: JournalItem): Observable<void> {

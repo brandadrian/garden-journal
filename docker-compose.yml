@@ -1,0 +1,12 @@
+version: '2.4'
+services:
+  backend:
+    build: garden-journal-backend
+    image: garden-journal-backend
+    ports:
+      - '8080:8080'
+  frontend:
+    build: garden-journal-frontend
+    image: garden-journal-frontend
+    ports:
+      - '80:80'
