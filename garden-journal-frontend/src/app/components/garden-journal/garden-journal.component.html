@@ -1,0 +1,7 @@
+<h1>Iterated Items</h1>
+<button (click)="addItem()">Add item</button>
+<div *ngFor="let journalItem of journalItems$ | async">
+    <b>Item</b>
+    <p>{{journalItem.id}}</p>
+    <p>{{journalItem.description}}</p>
+</div>
