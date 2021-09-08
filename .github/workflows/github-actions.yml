@@ -16,9 +16,16 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
     
-    - name: Build the Docker image
+    - name: Build the Docker image frontend
       working-directory: ./garden-journal-frontend
       run: docker build . --file Dockerfile --tag brandadr/garden-journal-frontend:latest
       
-    - name: Docker Push
+    - name: Docker Push frontend
       run: docker push brandadr/garden-journal-frontend
+    
+    - name: Build the Docker image backend
+      working-directory: ./garden-journal-backend
+      run: docker build . --file Dockerfile --tag brandadr/garden-journal-backend:latest
+      
+    - name: Docker Push backend
+      run: docker push brandadr/garden-journal-backend
