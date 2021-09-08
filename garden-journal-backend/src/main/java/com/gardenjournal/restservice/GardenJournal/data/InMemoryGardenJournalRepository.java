@@ -15,9 +15,9 @@ public class InMemoryGardenJournalRepository implements IGardenJournalRepository
 
     public InMemoryGardenJournalRepository() {
         this.inMemoryData = new ArrayList<GardenJournalItem>();
-        this.inMemoryData.add(new GardenJournalItem(1, "First Item"));
-        this.inMemoryData.add(new GardenJournalItem(2, "Second Item"));
-        this.inMemoryData.add(new GardenJournalItem(3, "Third Item"));
+        this.inMemoryData.add(new GardenJournalItem(1, "First Item, backend"));
+        this.inMemoryData.add(new GardenJournalItem(2, "Second Item, backend"));
+        this.inMemoryData.add(new GardenJournalItem(3, "Third Item, backend"));
     }
 
     @Override

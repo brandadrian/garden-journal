@@ -21,18 +21,21 @@ public class GardenJournalController {
 
     }
 
+    @CrossOrigin()
     @GetMapping(path="/journal-items/{id}", produces = "application/json")
     public GardenJournalItemDto getJournalItemById(@PathVariable("id") int id)
     {
         return this.gardenJournalService.getById(id);
     }
 
+    @CrossOrigin()
     @GetMapping(path="/journal-items", produces = "application/json")
     public List<GardenJournalItemDto> getJournalItems()
     {
         return this.gardenJournalService.getAll();
     }
 
+    @CrossOrigin()
     @PostMapping(path= "/journal-items", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> addJournalItem(@RequestBody GardenJournalItemDto gardenJournalItem)
     {
@@ -41,6 +44,7 @@ public class GardenJournalController {
         return ResponseEntity.ok("");
     }
 
+    @CrossOrigin()
     @DeleteMapping(path= "/journal-items/{id}", produces = "application/json")
     public ResponseEntity<Object> deleteJournalItem(@PathVariable("id") int id)
     {
@@ -49,6 +53,7 @@ public class GardenJournalController {
         return ResponseEntity.ok("");
     }
 
+    @CrossOrigin()
     @PutMapping(path= "/journal-items", consumes = "application/json", produces = "application/json")
     public ResponseEntity<Object> updateJournalItem(@RequestBody GardenJournalItemDto gardenJournalItem)
     {
