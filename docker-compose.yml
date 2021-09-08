@@ -1,11 +1,13 @@
 version: '2.4'
 services:
   backend:
+    image: brandfactoryacr.azurecr.io/garden-journal-backend:latest
     build: garden-journal-backend
     image: garden-journal-backend
     ports:
       - '8080:8080'
   frontend:
+    image: brandfactoryacr.azurecr.io/garden-journal-frontend:latest
     links: [backend]
     build: garden-journal-frontend
     image: garden-journal-frontend
