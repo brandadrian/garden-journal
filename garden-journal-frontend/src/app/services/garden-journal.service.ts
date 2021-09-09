@@ -17,9 +17,13 @@ export class GardenJournalService {
     private http: HttpClient
   ) { }
 
-  public getJournalItems(): Observable<Array<JournalItem>> {
-    //return this.http.get<Array<JournalItem>>(this.url);
+
+  public getJournalItemsMock(): Observable<Array<JournalItem>> {
     return of(this.mockData);
+  }
+
+  public getJournalItems(): Observable<Array<JournalItem>> {
+    return this.http.get<Array<JournalItem>>(this.url);
   }
 
   public addJournalItem(journalItem: JournalItem): Observable<void> {

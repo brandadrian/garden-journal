@@ -13,9 +13,10 @@ import { GardenJournalService } from "../services/garden-journal.service";
     constructor(
       private gardenJournalService: GardenJournalService
     ) { }
-  
+
     public getJournalItems(): Observable<Array<JournalItem>> {
-      return this.gardenJournalService.getJournalItems();
+      this.gardenJournalService.getJournalItems().subscribe(result => console.warn("RESULT FROM SERVER", result));
+      return this.gardenJournalService.getJournalItemsMock();
     }
   
     public addJournalItem(journalItem: JournalItem): Observable<void> {
