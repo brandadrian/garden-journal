@@ -18,14 +18,14 @@ jobs:
     - name: Build and push frontend
       working-directory: ./garden-journal-frontend
       run: |
-        docker build . -t brandfactoryacr.azurecr.io/garden-journal-frontend:${{ github.sha }}
-        docker push brandfactoryacr.azurecr.io/garden-journal-frontend:${{ github.sha }}
+        docker build . -t brandfactoryacr.azurecr.io/garden-journal-frontend:latest
+        docker push brandfactoryacr.azurecr.io/garden-journal-frontend:latest
         
     - name: Build and push backend
       working-directory: ./garden-journal-backend
       run: |
-        docker build . -t brandfactoryacr.azurecr.io/garden-journal-backend:${{ github.sha }}
-        docker push brandfactoryacr.azurecr.io/garden-journal-backend:${{ github.sha }}
+        docker build . -t brandfactoryacr.azurecr.io/garden-journal-backend:latest
+        docker push brandfactoryacr.azurecr.io/garden-journal-backend:latest
 
     #- uses: azure/webapps-deploy@v2
       #with:
