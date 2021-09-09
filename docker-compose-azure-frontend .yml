@@ -1,0 +1,8 @@
+version: '3'
+services:
+  frontend:
+    #image: brandadr/garden-journal-frontend:latest
+    image: brandfactoryacr.azurecr.io/garden-journal-frontend:latest
+    links: [backend]
+    ports:
+      - '80:80'
