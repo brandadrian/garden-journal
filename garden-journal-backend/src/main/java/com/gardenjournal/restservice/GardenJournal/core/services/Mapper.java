@@ -4,6 +4,7 @@ import com.gardenjournal.restservice.GardenJournal.core.dtos.GardenJournalItemDt
 import com.gardenjournal.restservice.GardenJournal.core.entities.GardenJournalItem;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Mapper {
@@ -20,7 +21,7 @@ public class Mapper {
 
     public static GardenJournalItemDto ToDto(GardenJournalItem item) {
 
-      return new GardenJournalItemDto(item.getid(), item.getDescription());
+      return new GardenJournalItemDto(item.getid(), item.getDescription(), item.getDate(), item.getTitle());
     }
 
     public static List<GardenJournalItem> FromDto(List<GardenJournalItemDto> dtos) {
@@ -35,6 +36,6 @@ public class Mapper {
 
     public static GardenJournalItem FromDto(GardenJournalItemDto item) {
 
-        return new GardenJournalItem(item.getid(), item.getDescription());
+        return new GardenJournalItem(item.getid(), item.getDescription(), item.getDate(), item.getTitle());
     }
 }

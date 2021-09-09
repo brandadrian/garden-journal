@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 @Component("InMemoryGardenJournalRepository")
@@ -15,9 +16,19 @@ public class InMemoryGardenJournalRepository implements IGardenJournalRepository
 
     public InMemoryGardenJournalRepository() {
         this.inMemoryData = new ArrayList<GardenJournalItem>();
-        this.inMemoryData.add(new GardenJournalItem(1, "First Item, backend."));
-        this.inMemoryData.add(new GardenJournalItem(2, "Second Item, backend."));
-        this.inMemoryData.add(new GardenJournalItem(3, "Third Item, backend."));
+        this.inMemoryData.add(new GardenJournalItem(
+                1,
+                "Gemüse wächst!!!!",
+                new Date(2021, 4, 1, 9, 10), "Das Gemüse wächst gut"));
+        this.inMemoryData.add(new GardenJournalItem(
+                2,
+                "Schnecken überall",
+                new Date(2021, 7, 11, 6, 33),
+                "Schnecken haben das Beet erobert"));
+        this.inMemoryData.add(new GardenJournalItem(3,
+                "Die Erdbeeren können geerntet werden",
+                new Date(2021, 9, 29, 16, 23),
+                "Feine Erdbeeren"));
     }
 
     @Override
@@ -45,7 +56,7 @@ public class InMemoryGardenJournalRepository implements IGardenJournalRepository
                 .max(Comparator.comparing(GardenJournalItem::getid));
 
         var id = itemWithMaxId != null ? itemWithMaxId.get().getid() + 1 : 0;
-        this.inMemoryData.add(new GardenJournalItem(id, gardenJournalItem.getDescription()));
+        this.inMemoryData.add(new GardenJournalItem(id, gardenJournalItem.getDescription(), gardenJournalItem.getDate(), gardenJournalItem.getTitle()));
     }
 
     @Override
@@ -54,9 +65,9 @@ public class InMemoryGardenJournalRepository implements IGardenJournalRepository
 
         for (var item: inMemoryData){
             if (item.getid() == gardenJournalItem.getid()) {
-                tempInMemoryData.add(new GardenJournalItem(gardenJournalItem.getid(), gardenJournalItem.getDescription()));
+                tempInMemoryData.add(new GardenJournalItem(gardenJournalItem.getid(), gardenJournalItem.getDescription(), gardenJournalItem.getDate(), gardenJournalItem.getTitle()));
             } else {
-                tempInMemoryData.add(new GardenJournalItem(item.getid(), item.getDescription()));
+                tempInMemoryData.add(new GardenJournalItem(item.getid(), item.getDescription(), item.getDate(), item.getTitle()));
             }
         }
 

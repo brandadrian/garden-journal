@@ -1,14 +1,22 @@
 package com.gardenjournal.restservice.GardenJournal.core.dtos;
 
+import java.util.Date;
+
 public class GardenJournalItemDto {
 
     private final int id;
 
     private final String description;
 
-    public GardenJournalItemDto(int id, String description) {
+    private final String title;
+
+    private final Date date;
+
+    public GardenJournalItemDto(int id, String description, Date date, String title) {
         this.id = id;
         this.description = description;
+        this.date = date;
+        this.title = title;
     }
 
     public int getid() {
@@ -19,5 +27,13 @@ public class GardenJournalItemDto {
     public String getDescription() {
 
         return this.description;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public Date getDate() {
+        return this.date;
     }
 }
