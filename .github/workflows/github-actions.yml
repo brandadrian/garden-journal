@@ -32,7 +32,6 @@ jobs:
         app-name: 'garden-journal'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         configuration-file: docker-compose-azure.yml
-        images:
-            'brandfactoryacr.azurecr.io/garden-journal-frontend:${{ github.sha }}'
+        images: 'brandfactoryacr.azurecr.io/garden-journal-frontend:${{ github.sha }}' \
             'brandfactoryacr.azurecr.io/garden-journal-backend:${{ github.sha }}'
         
