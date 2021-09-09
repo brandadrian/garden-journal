@@ -1,0 +1,16 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.journal-item-container {
+    max-width: 1400px;
+}
+
+.journal-item {
+    margin-top: 10px;
+    min-width: 1400px;
+  }

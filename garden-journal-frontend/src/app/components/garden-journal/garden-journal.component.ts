@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JournalItem } from 'src/app/data/journal-item.interface';
 import { GardenJournalDomainService } from 'src/app/domain/garden-journal.domain-service';
-import { GardenJournalService } from 'src/app/services/garden-journal.service';
 
 @Component({
   selector: 'app-garden-journal',
@@ -22,7 +21,7 @@ export class GardenJournalComponent implements OnInit {
   }
 
   public addItem(): void {
-    const newItem: JournalItem = {id: 42, description: 'newItem'};
+    const newItem: JournalItem = {id: 42, description: 'newItem', title: 'title', date: new Date()};
     this.gardenJournalDomainService.addJournalItem(newItem);
   }
 

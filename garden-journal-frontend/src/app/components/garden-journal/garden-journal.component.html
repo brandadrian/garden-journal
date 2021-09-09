@@ -1,7 +1,16 @@
-<h1>Iterated Items</h1>
-<button (click)="addItem()">Add item</button>
-<div *ngFor="let journalItem of journalItems$ | async">
-    <b>Item</b>
-    <p>{{journalItem.id}}</p>
-    <p>{{journalItem.description}}</p>
+<button (click)="addItem()" mat-button>Add new item</button>
+<div class="journal-item-container">
+   <span *ngFor="let journalItem of journalItems$ | async">
+      <mat-card class="journal-item">
+        <mat-card-title>{{journalItem.title}}</mat-card-title>
+        <mat-card-subtitle>{{journalItem.date | date:"dd:MM:YYYY HH:mm"}}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{journalItem.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>Edit</button>
+          <button mat-button>Delete</button>
+        </mat-card-actions>
+      </mat-card>
+     </span>
 </div>
