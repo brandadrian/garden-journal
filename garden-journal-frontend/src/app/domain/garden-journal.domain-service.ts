@@ -15,7 +15,7 @@ import { GardenJournalService } from "../services/garden-journal.service";
     ) { }
 
     public getJournalItems(): Observable<Array<JournalItem>> {
-      this.gardenJournalService.getJournalItems().subscribe(result => alert("RESULT FROM SERVER", result));
+      this.gardenJournalService.getJournalItems().subscribe(result => alert("RESULT FROM SERVER" + result.description));
       return this.gardenJournalService.getJournalItemsMock();
     }
   
