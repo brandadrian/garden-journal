@@ -1,0 +1,31 @@
+name: Build and Publish
+on: [push]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USERNAME}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    
+    - name: Build the Docker image frontend
+      working-directory: ./garden-journal-frontend
+      run: docker build . --file Dockerfile --tag brandadr/garden-journal-frontend:latest
+      
+    - name: Docker Push frontend
+      run: docker push brandadr/garden-journal-frontend
+    
+    - name: Build the Docker image backend
+      working-directory: ./garden-journal-backend
+      run: docker build . --file Dockerfile --tag brandadr/garden-journal-backend:latest
+      
+    - name: Docker Push backend
+      run: docker push brandadr/garden-journal-backend
