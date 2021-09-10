@@ -1,5 +1,19 @@
+<mat-checkbox
+  (change)="gardenJournalDomainService.setEditMode($event.checked)"
+  [checked]="(gardenJournalDomainService.isEditMode$ | async) ? true : false"
+  [color]="'primary'"
+  class="edit-mode-checkbox">
+  Edit Mode
+</mat-checkbox>
 
-<button (click)="addItem()" mat-raised-button class="add-item-button" color="primary">Add new item</button>
+<button 
+  *ngIf="gardenJournalDomainService.isEditMode$ | async"
+  (click)="addItem()"
+  mat-raised-button
+  class="add-item-button"
+  color="primary">
+  Add new item
+</button>
 <div class="journal-item-container">
    <mat-progress-spinner class="loading-spinner" *ngIf="!(gardenJournalDomainService.journalItems$ | async)" mode="indeterminate"></mat-progress-spinner>
    <span *ngFor="let journalItem of gardenJournalDomainService.journalItems$ | async">
@@ -9,7 +23,7 @@
         <mat-card-content>
           <p>{{journalItem.description}}</p>
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions *ngIf="gardenJournalDomainService.isEditMode$ | async">
           <button mat-raised-button (click)="editItem(journalItem)" color="primary">Edit</button>
           <button mat-raised-button (click)="deleteItem(journalItem)" color="warn">Delete</button>
         </mat-card-actions>

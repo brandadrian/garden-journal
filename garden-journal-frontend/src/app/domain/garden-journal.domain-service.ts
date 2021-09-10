@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { JournalItem } from "../data/journal-item.interface";
 import { GardenJournalService } from "../services/garden-journal.service";
 
@@ -7,8 +7,11 @@ import { GardenJournalService } from "../services/garden-journal.service";
     providedIn: 'root'
   })
   export class GardenJournalDomainService {
-    public journalItems$: Observable<Array<JournalItem>> | undefined;
+    private readonly journalItems = new BehaviorSubject<Array<JournalItem>>([]);
+    public journalItems$ = this.journalItems.asObservable();
 
+    private readonly isEditMode = new BehaviorSubject<boolean>(false);
+    public isEditMode$ = this.isEditMode.asObservable();
   
     constructor(
       private gardenJournalService: GardenJournalService
@@ -17,7 +20,7 @@ import { GardenJournalService } from "../services/garden-journal.service";
     }
 
     public init(): void {
-      this.journalItems$ = this.getJournalItems();
+      this.getJournalItems().subscribe(items => this.journalItems.next(items));
     }
 
     public getJournalItems(): Observable<Array<JournalItem>> {
@@ -34,5 +37,9 @@ import { GardenJournalService } from "../services/garden-journal.service";
 
     public editItem(item: JournalItem) {
       console.warn("EDIT ITEM", item);
+    }
+
+    public setEditMode(isEditMode: boolean) {
+      this.isEditMode.next(isEditMode);
     }
   }
