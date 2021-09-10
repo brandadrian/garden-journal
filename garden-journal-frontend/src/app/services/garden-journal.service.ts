@@ -23,7 +23,6 @@ export class GardenJournalService {
   }
 
   public getJournalItems(): Observable<Array<JournalItem>> {
-    console.warn("URL", this.url);
     return this.http.get<Array<JournalItem>>(this.url);
   }
 

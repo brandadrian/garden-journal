@@ -28,15 +28,16 @@ import { GardenJournalService } from "../services/garden-journal.service";
     }
   
     public addJournalItem(journalItem: JournalItem): Observable<void> {
+      alert("ADD ITEM" + JSON.stringify(journalItem));
       return this.gardenJournalService.addJournalItem(journalItem);
     }
 
     public deleteItem(item: JournalItem) {
-      console.warn("DELETE ITEM", item);
+      alert("DELETE ITEM" + JSON.stringify(item));
     }
 
     public editItem(item: JournalItem) {
-      console.warn("EDIT ITEM", item);
+      alert("EDIT ITEM" + JSON.stringify(item));
     }
 
     public setEditMode(isEditMode: boolean) {
