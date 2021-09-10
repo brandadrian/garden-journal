@@ -1,10 +1,8 @@
-<div *ngIf="!(journalItems$ | async)">
-  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-</div>
 
-<button (click)="addItem()" mat-button>Add new item</button>
+<button (click)="addItem()" mat-raised-button class="add-item-button" color="primary">Add new item</button>
 <div class="journal-item-container">
-   <span *ngFor="let journalItem of journalItems$ | async">
+   <mat-progress-spinner class="loading-spinner" *ngIf="!(gardenJournalDomainService.journalItems$ | async)" mode="indeterminate"></mat-progress-spinner>
+   <span *ngFor="let journalItem of gardenJournalDomainService.journalItems$ | async">
       <mat-card class="journal-item">
         <mat-card-title>{{journalItem.title}}</mat-card-title>
         <mat-card-subtitle>{{journalItem.date | date:"dd:MM:YYYY HH:mm"}}</mat-card-subtitle>
@@ -12,8 +10,8 @@
           <p>{{journalItem.description}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button>Edit</button>
-          <button mat-button>Delete</button>
+          <button mat-raised-button (click)="editItem(journalItem)" color="primary">Edit</button>
+          <button mat-raised-button (click)="deleteItem(journalItem)" color="warn">Delete</button>
         </mat-card-actions>
       </mat-card>
      </span>

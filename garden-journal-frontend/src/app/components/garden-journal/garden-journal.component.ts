@@ -10,14 +10,12 @@ import { GardenJournalDomainService } from 'src/app/domain/garden-journal.domain
 })
 export class GardenJournalComponent implements OnInit {
 
-  public journalItems$: Observable<Array<JournalItem>> | undefined;
-
   constructor(
-    private readonly gardenJournalDomainService: GardenJournalDomainService
+    public readonly gardenJournalDomainService: GardenJournalDomainService
   ) { }
 
   public ngOnInit(): void {
-    this.journalItems$ = this.gardenJournalDomainService.getJournalItems();
+    this.gardenJournalDomainService.init();
   }
 
   public addItem(): void {
@@ -25,4 +23,11 @@ export class GardenJournalComponent implements OnInit {
     this.gardenJournalDomainService.addJournalItem(newItem);
   }
 
+  public editItem(journalItem: JournalItem): void {
+    this.gardenJournalDomainService.editItem(journalItem);
+  }
+
+  public deleteItem(journalItem: JournalItem): void {
+    this.gardenJournalDomainService.deleteItem(journalItem);
+  }
 }

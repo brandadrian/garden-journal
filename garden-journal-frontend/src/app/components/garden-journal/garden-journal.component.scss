@@ -1,7 +1,6 @@
 :host{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
@@ -12,5 +11,13 @@
 
 .journal-item {
     margin-top: 10px;
-    width: 1400px;
-  }
+}
+
+.loading-spinner-item {
+    margin-top: 30px;
+}
+
+.add-item-button {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
