@@ -6,10 +6,25 @@ services:
     image: garden-journal-backend
     ports:
       - '8080:8080'
+    depends_on:
+      - database
   frontend:
     image: brandfactoryacr.azurecr.io/garden-journal-frontend:latest
     links: [backend]
     build: garden-journal-frontend
     image: garden-journal-frontend
     ports:
-      - '80:80'
+      - '81:80'
+  database:
+    image: "postgres:11.4"
+    restart: always
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: gj_db
+      POSTGRES_PASSWORD: root
+  volumes:
+    postgres_database:
+      external: true
