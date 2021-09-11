@@ -15,7 +15,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
 
-        databaseMigration.init();
+        //databaseMigration.init();
 
         return;
     }
