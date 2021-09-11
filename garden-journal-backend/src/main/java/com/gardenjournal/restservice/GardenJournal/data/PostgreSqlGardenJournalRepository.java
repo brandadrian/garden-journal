@@ -39,8 +39,7 @@ public class PostgreSqlGardenJournalRepository implements IGardenJournalReposito
     @Override
     public void save(GardenJournalItem gardenJournalItem) {
         jdbcTemplate.update(
-                "INSERT INTO GARDENJOURNALITEMS (ID, DESCRIPTION, DATE, TITLE) VALUES (?, ?, ?, ?)",
-                gardenJournalItem.getid(),
+                "INSERT INTO GARDENJOURNALITEMS (DESCRIPTION, DATE, TITLE) VALUES (?, ?, ?)",
                 gardenJournalItem.getDescription(),
                 gardenJournalItem.getDate(),
                 gardenJournalItem.getTitle()

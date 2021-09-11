@@ -1,6 +1,4 @@
 package com.gardenjournal.restservice.GardenJournal.core.interfaces;
-
-import com.gardenjournal.restservice.GardenJournal.core.dtos.GardenJournalItemDto;
 import com.gardenjournal.restservice.GardenJournal.core.entities.GardenJournalItem;
 
 import java.util.List;
