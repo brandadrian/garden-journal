@@ -10,14 +10,20 @@ public class DatabaseMigration {
     private JdbcTemplate jdbcTemplate;
 
     public void init() {
-        jdbcTemplate.update(
-                "CREATE TABLE IF NOT EXISTS public.gardenjournalitems\n" +
-                        "(\n" +
-                        "    id SERIAL PRIMARY KEY,\n" +
-                        "    description text,\n" +
-                        "    title text,\n" +
-                        "    date date\n" +
-                        ")"
-        );
+        try {
+            jdbcTemplate.update(
+                    "CREATE TABLE IF NOT EXISTS public.gardenjournalitems\n" +
+                            "(\n" +
+                            "    id SERIAL PRIMARY KEY,\n" +
+                            "    description text,\n" +
+                            "    title text,\n" +
+                            "    date date\n" +
+                            ")"
+            );
+        }
+        catch(Exception exception) {
+            //Todo: Log exception
+        }
+
     }
 }
