@@ -1,0 +1,10 @@
+Database
+ - Mount volume by using mount command on windows
+ - Use docker-compose name instead of localhost in db connection
+
+Backend
+ -
+
+
+Frontend
+ -
