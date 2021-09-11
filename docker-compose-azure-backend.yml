@@ -5,7 +5,7 @@ services:
     image: brandfactoryacr.azurecr.io/garden-journal-backend:latest
     ports:
       - '80:8080'
-  database:
+  gj_db:
     image: "postgres:11.4"
     restart: always
     ports:
