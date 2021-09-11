@@ -7,7 +7,7 @@ services:
     ports:
       - '8080:8080'
     depends_on:
-      - database
+      - gj_db
   frontend:
     image: brandfactoryacr.azurecr.io/garden-journal-frontend:latest
     links: [backend]
@@ -15,7 +15,7 @@ services:
     image: garden-journal-frontend
     ports:
       - '81:80'
-  database:
+  gj_db:
     image: "postgres:11.4"
     restart: always
     ports:
