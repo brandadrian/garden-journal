@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { GenericDialogField } from 'src/app/data/generic-dialog-field';
 import { JournalItem } from 'src/app/data/journal-item.interface';
 import { GardenJournalDomainService } from 'src/app/domain/garden-journal.domain-service';
 import { GenericDialogService } from 'src/app/services/generic-dialog.service';
@@ -19,13 +20,12 @@ export class GardenJournalComponent implements OnInit {
 
   public ngOnInit(): void {
     this.gardenJournalDomainService.init();
-    this.genericDialogService.dialogClosed$.subscribe(dialogFields => console.warn("Dialog closed", dialogFields));
   }
 
   public addItem(): void {
     const newItem: JournalItem = {id: 42, description: '', title: '', date: new Date()};
 
-    const fields =       [
+    const fields: Array<GenericDialogField> =       [
       {name: 'title', value: newItem.title},
       {name: 'description', value: newItem.description}
     ];
@@ -35,7 +35,10 @@ export class GardenJournalComponent implements OnInit {
       "A new item will be added",
       fields,
       () => {
-        this.gardenJournalDomainService.addJournalItem(newItem);
+        this.mapFields(fields, newItem)
+        this.gardenJournalDomainService.addJournalItem(newItem).subscribe(() => {
+          this.gardenJournalDomainService.init();
+        });
       });
   }
 
@@ -50,11 +53,23 @@ export class GardenJournalComponent implements OnInit {
       "Change the values",
       fields,
       () => {
-        this.gardenJournalDomainService.editItem(journalItem);
+        this.mapFields(fields, journalItem)
+        this.gardenJournalDomainService.editItem(journalItem).subscribe(() => {
+          this.gardenJournalDomainService.init();
+        });
       });
   }
 
   public deleteItem(journalItem: JournalItem): void {
-    this.gardenJournalDomainService.deleteItem(journalItem);
+    this.gardenJournalDomainService.deleteItem(journalItem).subscribe(() => {
+      this.gardenJournalDomainService.init();
+    });
+  }
+
+  private mapFields(fields: Array<GenericDialogField>, target: JournalItem) {
+    const title = fields.find(f => f.name === 'title')?.value;
+    const description = fields.find(f => f.name === 'description')?.value;
+    target.description = description ?? '';
+    target.title = title ?? '';
   }
 }
