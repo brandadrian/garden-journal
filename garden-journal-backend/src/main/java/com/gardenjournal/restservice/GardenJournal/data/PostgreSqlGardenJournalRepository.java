@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
 @Component("PostgreSqlGardenJournalRepository")
 public class PostgreSqlGardenJournalRepository implements IGardenJournalRepository {
@@ -27,39 +28,47 @@ public class PostgreSqlGardenJournalRepository implements IGardenJournalReposito
 
     @Override
     public List<GardenJournalItem> getAll() {
+        System.out.println("PostgreSqlGardenJournalRepository.getAll start");
         String sql = "SELECT * FROM GARDENJOURNALITEMS";
 
         List<GardenJournalItem> items = jdbcTemplate.query(
                 sql,
                 new GardenJournalItemRowMapper());
 
+        System.out.println("PostgreSqlGardenJournalRepository.getAll end; count" + items.size());
         return items;
     }
 
     @Override
     public void save(GardenJournalItem gardenJournalItem) {
+        System.out.println("PostgreSqlGardenJournalRepository.getAll save");
         jdbcTemplate.update(
                 "INSERT INTO GARDENJOURNALITEMS (DESCRIPTION, DATE, TITLE) VALUES (?, ?, ?)",
                 gardenJournalItem.getDescription(),
                 gardenJournalItem.getDate(),
                 gardenJournalItem.getTitle()
         );
+        System.out.println("PostgreSqlGardenJournalRepository.getAll save done");
     }
 
     @Override
     public void update(GardenJournalItem gardenJournalItem) {
+        System.out.println("PostgreSqlGardenJournalRepository.getAll update");
         this.jdbcTemplate.update(
                 "UPDATE GARDENJOURNALITEMS SET DESCRIPTION = ?, DATE = ?, TITLE = ? WHERE ID = ?",
                 gardenJournalItem.getDescription(),
                 gardenJournalItem.getDate(),
                 gardenJournalItem.getTitle(),
                 gardenJournalItem.getid());
+        System.out.println("PostgreSqlGardenJournalRepository.getAll update done");
     }
 
     @Override
     public void delete(int id) {
+        System.out.println("PostgreSqlGardenJournalRepository.getAll delete");
         this.jdbcTemplate.update(
                 "DELETE FROM GARDENJOURNALITEMS WHERE ID = ?",
                 id);
+        System.out.println("PostgreSqlGardenJournalRepository.getAll delete done");
     }
 }
