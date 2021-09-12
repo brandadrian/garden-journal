@@ -17,18 +17,20 @@ export class GardenJournalService {
     private http: HttpClient
   ) { }
 
-
-  public getJournalItemsMock(): Observable<Array<JournalItem>> {
-    return of(this.mockData);
-  }
-
   public getJournalItems(): Observable<Array<JournalItem>> {
     return this.http.get<Array<JournalItem>>(this.url);
   }
 
   public addJournalItem(journalItem: JournalItem): Observable<void> {
-    this.mockData = [...journalItemsMock, journalItem];
-  
-    return of();
+    return this.http.post<void>(this.url, journalItem);
+  }
+
+  public editJournalItem(journalItem: JournalItem): Observable<void> {
+    return this.http.put<void>(this.url, journalItem);
+  }
+
+  public deleteJournalItem(journalItem: JournalItem): Observable<void> {
+    console.warn("DELETE", this.url + '/' + journalItem.id)
+    return this.http.delete<void>(this.url + '/' + journalItem.id);
   }
 }

@@ -11,24 +11,38 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { GenericDialogComponent } from './components/generic-dialog/generic-dialog.component'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRippleModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GardenJournalComponent
+    GardenJournalComponent,
+    GenericDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
