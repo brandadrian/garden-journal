@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { GenericDialogField } from 'src/app/data/generic-dialog-field';
+import { GenericDialogService, GenericDialogField } from 'factory-ui';
 import { JournalItem } from 'src/app/data/journal-item.interface';
 import { GardenJournalDomainService } from 'src/app/domain/garden-journal.domain-service';
-import { GenericDialogService } from 'src/app/services/generic-dialog.service';
-import { GenericDialogComponent } from '../generic-dialog/generic-dialog.component';
+
 
 @Component({
   selector: 'app-garden-journal',

@@ -12,18 +12,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { GenericDialogComponent } from './components/generic-dialog/generic-dialog.component'; 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRippleModule } from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FactoryUiModule } from 'factory-ui';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    GardenJournalComponent,
-    GenericDialogComponent
+    GardenJournalComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +43,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
+    FactoryUiModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
