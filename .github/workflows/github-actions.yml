@@ -27,8 +27,7 @@ jobs:
         docker build . -t brandfactoryacr.azurecr.io/garden-journal-backend:latest
         docker push brandfactoryacr.azurecr.io/garden-journal-backend:latest
 
-    #- uses: azure/webapps-deploy@v2
-      #with:
-        #app-name: 'garden-journal'
-        #publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        #configuration-file: docker-compose-azure.yml        
+    - uses: azure/webapps-deploy@v2
+        with:
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          run: az webapp config container set --resource-group brandfactory-rg --name garden-journal-app --multicontainer-config-type compose --multicontainer-config-file docker-compose-azure-frontend.yml
