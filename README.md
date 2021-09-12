@@ -3,7 +3,7 @@ App to track garden work and plants by a short text and a picture.
 
 Frontend
 - Angular
-u
+
 Backend
 - Java Spring
 
