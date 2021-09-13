@@ -17,7 +17,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatInputModule} from '@angular/material/input';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FactoryUiModule } from 'factory-ui';
+import { CommonModule } from '@angular/common';
+import { FactoryUiLibModule } from 'factory-ui';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FactoryUiModule } from 'factory-ui';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -43,7 +45,7 @@ import { FactoryUiModule } from 'factory-ui';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    FactoryUiModule
+    FactoryUiLibModule
   ],
   providers: [
     
