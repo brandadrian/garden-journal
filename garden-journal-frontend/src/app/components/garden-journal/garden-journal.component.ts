@@ -41,9 +41,9 @@ export class GardenJournalComponent implements OnInit {
   }
 
   public editItem(journalItem: JournalItem): void {
-    const fields =       [
-      {name: 'title', value: journalItem.title},
-      {name: 'description', value: journalItem.description}
+    const fields = [
+      { id: 'title', labelName: 'Title', value: journalItem.title },
+      { id: 'description', labelName: 'Description', value: journalItem.description }
     ];
 
     this.genericDialogService.openDialog(     
@@ -65,8 +65,8 @@ export class GardenJournalComponent implements OnInit {
   }
 
   private mapFields(fields: Array<GenericDialogField>, target: JournalItem) {
-    const title = fields.find(f => f.name === 'title')?.value;
-    const description = fields.find(f => f.name === 'description')?.value;
+    const title = fields.find(f => f.id === 'title')?.value;
+    const description = fields.find(f => f.id === 'description')?.value;
     target.description = description ?? '';
     target.title = title ?? '';
   }
