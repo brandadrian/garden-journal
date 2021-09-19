@@ -24,8 +24,8 @@ export class GardenJournalComponent implements OnInit {
     const newItem: JournalItem = {id: 42, description: '', title: '', date: new Date()};
 
     const fields: Array<GenericDialogField> =       [
-      {name: 'title', value: newItem.title},
-      {name: 'description', value: newItem.description}
+      {id: 'title', labelName: 'Title', value: newItem.title},
+      {id: 'description', labelName: 'Description', value: newItem.description}
     ];
 
     this.genericDialogService.openDialog(     
